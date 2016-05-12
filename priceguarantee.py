@@ -76,7 +76,8 @@ def  comparePriceAndIfCheaperSendEmail(firstLegCurrentPrice, secondLegCurrentPri
     try:
         currentTotalPrice = firstLegCurrentPrice + secondLegCurrentPrice
     except TypeError:
-        return    if currentTotalPrice < pricePaid:
+        return    
+        if currentTotalPrice < pricePaid:
         smtpObj.sendmail(loginname, "jordontriggs@gmail.com",
                          'Subject: Cheaper Flight!\nThe price of your flight to ' + nickName + ' has gotten cheaper! Login to alaskaair.com to claim your credit!')
         print("Savings!")
