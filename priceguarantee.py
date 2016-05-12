@@ -74,8 +74,10 @@ def checkPrice(leg, date):
 
 def  comparePriceAndIfCheaperSendEmail(firstLegCurrentPrice, secondLegCurrentPrice, pricePaid, nickName):
     """#compare current price of both legs combined (total price) vs price paid. If the current price is cheaper than the pricePaid send an email advising that the price has dropped."""
-    currentTotalPrice = firstLegCurrentPrice + secondLegCurrentPrice
-    if currentTotalPrice < pricePaid:
+    try:
+        currentTotalPrice = firstLegCurrentPrice + secondLegCurrentPrice
+    except TypeError:
+        return    if currentTotalPrice < pricePaid:
         smtpObj.sendmail(loginname, "jordontriggs@gmail.com",
                          'Subject: Cheaper Flight!\nThe price of your flight to ' + nickName + ' has gotten cheaper! Login to alaskaair.com to claim your credit!')
         print("Savings!")
