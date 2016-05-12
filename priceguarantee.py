@@ -54,7 +54,6 @@ def getFlightInfo():
         firstLegCurrentPrice = checkPrice(firstLeg, dateDepart)
         secondLegCurrentPrice = checkPrice(secondLeg, dateReturn)
         comparePriceAndIfCheaperSendEmail(firstLegCurrentPrice, secondLegCurrentPrice, pricePaid, nickName)
-        #checkPrice(pricePaid)
 
 
 def checkPrice(leg, date):
