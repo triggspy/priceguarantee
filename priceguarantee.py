@@ -9,10 +9,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 def callApi(date):
     """Queries the Google API for all the flights on a specified DATE between LAX & SEA. That data can be searched through to find the price and compare it to our pricePaid."""
-    #with open('/home/jtriggs/Documents/response.json') as f:
-    #    data = json.load(f)
-    #return data
-
     URL = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + API_KEY
     HEADERS = {'content-type': 'application/json'}
 
@@ -41,8 +37,6 @@ def callApi(date):
     response = requests.post(URL, data=json.dumps(searchParam), headers=HEADERS)
     data = response.json()
     return data
-    #print(json.dumps(data, sort_keys=True, indent=1, separators=(',', ': ')))
-
 
 def getFlightInfo():
     '''
@@ -50,7 +44,6 @@ def getFlightInfo():
 
     Sample output from flight_info: ['5/11/2016 16:13:44', '450', '477', '2016-05-12', '2016-05-16', '180.2', 'jordontriggs@gmail.com', 'Los Angeles2']
     '''
-    #with open('/home/jtriggs/Documents/response.json') as f:
     scope = ['https://spreadsheets.google.com/feeds']
     credentials = ServiceAccountCredentials.from_json_keyfile_name('secret2.json', scope)
     gc = gspread.authorize(credentials)
